@@ -1,0 +1,8 @@
+{
+  "id": "periodic_hint",
+  "triggers": [{ "type": "time_schedule", "every_ms_10_to_600000": 5000 }],
+  "conditions": [],
+  "actions": [
+    { "type": "service_call", "service": "debug.log", "data": { "message": "Remember to take breaks" } }
+  ]
+}

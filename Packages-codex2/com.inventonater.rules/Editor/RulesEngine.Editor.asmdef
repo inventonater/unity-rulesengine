@@ -1,0 +1,6 @@
+{
+  "name": "Inventonater.RulesEngine.Editor",
+  "autoReferenced": false,
+  "references": ["Inventonater.RulesEngine.Runtime"],
+  "includePlatforms": ["Editor"]
+}

@@ -1,0 +1,25 @@
+{
+  "id": "konami_pattern",
+  "triggers": [
+    {
+      "type": "pattern_sequence",
+      "within_ms_10_to_5000": 5000,
+      "sequence": [
+        { "name": "key.up.down" },
+        { "name": "key.up.down" },
+        { "name": "key.down.down" },
+        { "name": "key.down.down" },
+        { "name": "key.left.down" },
+        { "name": "key.right.down" },
+        { "name": "key.left.down" },
+        { "name": "key.right.down" },
+        { "name": "key.b.down" },
+        { "name": "key.a.down" }
+      ]
+    }
+  ],
+  "conditions": [],
+  "actions": [
+    { "type": "service_call", "service": "ui.toast", "data": { "text": "Konami" } }
+  ]
+}

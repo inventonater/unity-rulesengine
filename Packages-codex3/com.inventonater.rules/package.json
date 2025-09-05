@@ -1,0 +1,15 @@
+{
+  "name": "com.inventonater.rules",
+  "displayName": "Inventonater Rules (LLM JSON \u2192 Unity)",
+  "version": "0.1.0",
+  "unity": "6000.0.0",
+  "description": "Weekend MVP rules engine: LLM JSON \u2192 triggers/conditions/actions \u2192 services (audio/log/ui). Desktop now, Quest-ready later.",
+  "author": { "name": "Inventonater" },
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.cysharp.unitask": "2.5.0"
+  },
+  "samples": [
+    { "displayName": "Demo Scene & Rules", "description": "Click, hold, schedule, double-click, Konami (JSON sequence) + extras", "path": "Samples~/Demo" }
+  ]
+}

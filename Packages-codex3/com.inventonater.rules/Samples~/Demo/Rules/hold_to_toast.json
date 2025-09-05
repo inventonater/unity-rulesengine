@@ -1,0 +1,10 @@
+{
+  "id": "hold_to_toast",
+  "triggers": [{ "type": "event", "name": "mouse.left.up" }],
+  "conditions": [
+    { "type": "numeric_compare", "entity": "mouse.left.duration", "compare": "gte", "value": 500 }
+  ],
+  "actions": [
+    { "type": "service_call", "service": "ui.toast", "data": { "message": "Hold complete" } }
+  ]
+}

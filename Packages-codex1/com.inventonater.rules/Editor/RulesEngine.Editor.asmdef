@@ -1,0 +1,6 @@
+{
+  "name": "RulesEngine.Editor",
+  "references": ["RulesEngine.Runtime"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": false
+}

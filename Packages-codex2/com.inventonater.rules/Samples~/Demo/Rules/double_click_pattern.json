@@ -1,0 +1,17 @@
+{
+  "id": "double_click_pattern",
+  "triggers": [
+    {
+      "type": "pattern_sequence",
+      "within_ms_10_to_5000": 300,
+      "sequence": [
+        { "name": "mouse.left.down" },
+        { "name": "mouse.left.down" }
+      ]
+    }
+  ],
+  "conditions": [],
+  "actions": [
+    { "type": "service_call", "service": "audio.play", "data": { "clip": "beep" } }
+  ]
+}

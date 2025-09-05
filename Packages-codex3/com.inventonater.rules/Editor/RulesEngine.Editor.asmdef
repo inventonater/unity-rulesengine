@@ -1,0 +1,7 @@
+{
+  "name": "Inventonater.RulesEngine.Editor",
+  "references": ["Inventonater.RulesEngine.Runtime"],
+  "optionalUnityReferences": ["TestAssemblies"],
+  "includePlatforms": ["Editor"],
+  "autoReferenced": false
+}

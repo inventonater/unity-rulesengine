@@ -1,0 +1,71 @@
+{
+  "id": "konami_pattern",
+  "mode": "single",
+  "triggers": [
+    {
+      "type": "pattern_sequence",
+      "within_ms_10_to_5000": 1500,
+      "sequence": [
+        {
+          "name": "key.arrow_up.down"
+        },
+        {
+          "name": "key.arrow_up.down"
+        },
+        {
+          "name": "key.arrow_down.down"
+        },
+        {
+          "name": "key.arrow_down.down"
+        },
+        {
+          "name": "key.arrow_left.down"
+        },
+        {
+          "name": "key.arrow_right.down"
+        },
+        {
+          "name": "key.arrow_left.down"
+        },
+        {
+          "name": "key.arrow_right.down"
+        },
+        {
+          "name": "key.b.down"
+        },
+        {
+          "name": "key.a.down"
+        }
+      ]
+    }
+  ],
+  "conditions": [],
+  "actions": [
+    {
+      "type": "service_call",
+      "service": "ui.toast",
+      "data": {
+        "text": "KONAMI!",
+        "duration_ms_0_to_10000": 1200
+      }
+    },
+    {
+      "type": "repeat_count",
+      "count_1_to_20": 3,
+      "actions": [
+        {
+          "type": "service_call",
+          "service": "audio.play",
+          "data": {
+            "clip": "beep",
+            "volume_0_to_1": 0.9
+          }
+        },
+        {
+          "type": "wait_duration",
+          "duration_ms_0_to_60000": 120
+        }
+      ]
+    }
+  ]
+}

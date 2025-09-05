@@ -1,0 +1,17 @@
+{
+  "id": "speed_gate",
+  "mode": "restart",
+  "triggers": [{
+    "type": "numeric_threshold",
+    "entity": ["sensor.mouse_speed"],
+    "above": 600,
+    "for_ms_0_to_60000": 100
+  }],
+  "conditions": [],
+  "actions": [
+    { "type": "repeat_count", "count_1_to_20": 3, "actions": [
+      { "type": "service_call", "service": "audio.play", "data": { "clip": "beep", "volume_0_to_1": 0.8 } },
+      { "type": "wait_duration", "duration_ms_0_to_60000": 150 }
+    ]}
+  ]
+}

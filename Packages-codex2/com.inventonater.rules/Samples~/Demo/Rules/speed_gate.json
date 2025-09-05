@@ -1,0 +1,10 @@
+{
+  "id": "speed_gate",
+  "triggers": [
+    { "type": "numeric_threshold", "entity": "mouse.speed", "above": 5 }
+  ],
+  "conditions": [],
+  "actions": [
+    { "type": "service_call", "service": "ui.toast", "data": { "text": "Too fast" } }
+  ]
+}

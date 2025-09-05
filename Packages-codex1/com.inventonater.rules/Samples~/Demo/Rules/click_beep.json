@@ -1,0 +1,8 @@
+{
+  "id": "click_beep",
+  "triggers": [ { "type": "event", "name": "mouse.left.down" } ],
+  "conditions": [],
+  "actions": [
+    { "type": "service_call", "service": "audio.play", "data": { "clip": "beep" } }
+  ]
+}

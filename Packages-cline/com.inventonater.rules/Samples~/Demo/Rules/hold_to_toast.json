@@ -1,0 +1,23 @@
+{
+  "id": "hold_to_toast",
+  "mode": "single",
+  "triggers": [
+    {
+      "type": "numeric_threshold",
+      "entity": ["sensor.mouse_button_left"],
+      "above": 0.5,
+      "for_ms_0_to_60000": 300
+    }
+  ],
+  "conditions": [],
+  "actions": [
+    {
+      "type": "service_call",
+      "service": "ui.toast",
+      "data": {
+        "text": "Held!",
+        "duration_ms_0_to_10000": 1000
+      }
+    }
+  ]
+}

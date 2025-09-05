@@ -1,0 +1,16 @@
+{
+    "name": "RulesEngine.Editor",
+    "rootNamespace": "Inventonater.Rules.Editor",
+    "references": [
+        "RulesEngine.Runtime"
+    ],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

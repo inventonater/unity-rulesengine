@@ -1,0 +1,11 @@
+{
+  "id": "hold_to_toast",
+  "triggers": [
+    { "type": "event", "name": "mouse.left.up" }
+  ],
+  "conditions": [],
+  "actions": [
+    { "type": "wait_duration", "duration_ms_0_to_60000": 500 },
+    { "type": "service_call", "service": "ui.toast", "data": { "text": "Held click" } }
+  ]
+}

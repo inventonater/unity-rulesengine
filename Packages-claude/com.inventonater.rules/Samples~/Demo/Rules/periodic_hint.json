@@ -1,0 +1,9 @@
+{
+  "id": "periodic_hint",
+  "triggers": [{ "type": "time_schedule", "every_ms_10_to_600000": 2000 }],
+  "conditions": [{ "type": "state_equals", "entity": ["ui.mode"], "equals": ["debug"] }],
+  "actions": [
+    { "type": "service_call", "service": "debug.log",
+      "data": { "message": "Debug hint tick" } }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "space_combo_triple_beep",
+  "triggers": [{
+    "type": "pattern_sequence",
+    "within_ms_10_to_5000": 300,
+    "sequence": [{ "name": "key.space.down" }, { "name": "key.space.down" }]
+  }],
+  "conditions": [],
+  "actions": [
+    { "type": "repeat_count", "count_1_to_20": 3, "actions": [
+      { "type": "service_call", "service": "audio.play", "data": { "clip": "beep", "volume_0_to_1": 0.8 } },
+      { "type": "wait_duration", "duration_ms_0_to_60000": 120 }
+    ]}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "heartbeat_log",
+  "triggers": [
+    { "type": "time_schedule", "every_ms_10_to_600000": 2000 }
+  ],
+  "conditions": [],
+  "actions": [
+    { "type": "service_call", "service": "debug.log", "data": { "message": "Heartbeat tick" } }
+  ]
+}
