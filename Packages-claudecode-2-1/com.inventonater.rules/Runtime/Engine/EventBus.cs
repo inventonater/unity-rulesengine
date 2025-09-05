@@ -3,6 +3,22 @@ using System.Collections.Generic;
 
 namespace Inventonater.Rules
 {
+    internal class DisposableAction : IDisposable
+    {
+        private Action _action;
+        
+        public DisposableAction(Action action)
+        {
+            _action = action;
+        }
+        
+        public void Dispose()
+        {
+            _action?.Invoke();
+            _action = null;
+        }
+    }
+
     public class EventBus : IEventBus
     {
         private readonly Dictionary<string, List<Action>> _handlers = new();
