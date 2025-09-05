@@ -1,0 +1,22 @@
+{
+  "name": "com.inventonater.rules",
+  "version": "2.1.0",
+  "displayName": "Unity Rules Engine",
+  "description": "High-performance Event-Condition-Action rules engine optimized for Unity and LLM authoring",
+  "unity": "2022.3",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.1",
+    "com.cysharp.unitask": "2.5.0"
+  },
+  "keywords": [
+    "rules",
+    "engine",
+    "event",
+    "condition",
+    "action"
+  ],
+  "author": {
+    "name": "Inventonater",
+    "email": "support@inventonater.com"
+  }
+}

@@ -1,0 +1,111 @@
+[
+  {
+    "id": "click_sound",
+    "mode": "single",
+    "triggers": [
+      { "type": "event", "name": "click" }
+    ],
+    "actions": [
+      { "type": "play_sound", "sound": "beep", "volume_0_to_1": 0.5 },
+      { "type": "increment_value", "entity": "game.score", "value": "1" }
+    ]
+  },
+  {
+    "id": "double_click_bonus",
+    "mode": "single",
+    "triggers": [
+      { "type": "event", "name": "double_click" }
+    ],
+    "actions": [
+      { "type": "play_sound", "sound": "charge", "volume_0_to_1": 0.7 },
+      { "type": "increment_value", "entity": "game.score", "value": "10" },
+      { "type": "log", "message": "Double click bonus!", "severity": "info" }
+    ]
+  },
+  {
+    "id": "heartbeat",
+    "mode": "queued",
+    "triggers": [
+      { "type": "time_schedule", "every_ms_10_to_600000": 1000 }
+    ],
+    "conditions": [
+      { "type": "comparison", "entity": "game.health", "operator": "less_than", "value": "50" }
+    ],
+    "actions": [
+      { "type": "play_sound", "sound": "warning", "volume_0_to_1": 0.3 },
+      { "type": "log", "message": "Low health warning", "severity": "warning" }
+    ]
+  },
+  {
+    "id": "konami_code",
+    "mode": "single",
+    "triggers": [
+      {
+        "type": "pattern_sequence",
+        "within_ms_10_to_5000": 5000,
+        "sequence": [
+          { "name": "arrow_up" },
+          { "name": "arrow_up" },
+          { "name": "arrow_down" },
+          { "name": "arrow_down" },
+          { "name": "arrow_left" },
+          { "name": "arrow_right" },
+          { "name": "arrow_left" },
+          { "name": "arrow_right" }
+        ]
+      }
+    ],
+    "actions": [
+      { "type": "play_sound", "sound": "secret", "volume_0_to_1": 1.0 },
+      { "type": "set_value", "entity": "game.health", "value": "100" },
+      { "type": "log", "message": "Konami code activated!", "severity": "info" }
+    ]
+  },
+  {
+    "id": "score_milestone",
+    "mode": "single",
+    "triggers": [
+      { "type": "numeric_threshold", "entity": "game.score", "above": "100" }
+    ],
+    "actions": [
+      { "type": "play_sound", "sound": "charge", "volume_0_to_1": 0.8 },
+      { "type": "log", "message": "Score milestone reached!", "severity": "info" },
+      { "type": "set_value", "entity": "game.level", "value": "2" }
+    ]
+  },
+  {
+    "id": "drag_charge",
+    "mode": "single",
+    "triggers": [
+      { "type": "event", "name": "drag_held_2s" }
+    ],
+    "conditions": [
+      { "type": "comparison", "entity": "input.drag.active", "operator": "equals", "value": "true" }
+    ],
+    "actions": [
+      { "type": "play_sound", "sound": "charge", "volume_0_to_1": 0.6 },
+      { "type": "wait", "delay_ms": 500 },
+      { "type": "play_sound", "sound": "beep", "volume_0_to_1": 0.8 }
+    ]
+  },
+  {
+    "id": "combo_builder",
+    "mode": "queued",
+    "triggers": [
+      {
+        "type": "pattern_sequence",
+        "within_ms_10_to_5000": 2000,
+        "sequence": [
+          { "name": "click" },
+          { "name": "click" },
+          { "name": "click" }
+        ]
+      }
+    ],
+    "actions": [
+      { "type": "increment_value", "entity": "game.combo", "value": "1" },
+      { "type": "play_sound", "sound": "tick", "volume_0_to_1": 0.4 },
+      { "type": "log", "message": "Combo x3!", "severity": "info" }
+    ]
+  }
+]
