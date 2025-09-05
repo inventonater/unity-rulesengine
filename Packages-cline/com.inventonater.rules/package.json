@@ -2,7 +2,6 @@
   "name": "com.inventonater.rules",
   "displayName": "Inventonater Rules (LLM JSON → Unity)",
   "version": "0.1.0",
-  "unity": "6000.0.0",
   "description": "Weekend MVP rules engine: LLM JSON → triggers/conditions/actions → services (audio/log/ui). Desktop now, Quest-ready later.",
   "author": { 
     "name": "Inventonater"

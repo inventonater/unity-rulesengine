@@ -21,25 +21,12 @@ namespace Inventonater.Rules
     /// <summary>
     /// Fixed event bus using traditional pub-sub pattern instead of Channels
     /// </summary>
-    public class EventBus
+    public static class EventBus
     {
-        private readonly Dictionary<string, List<Action<EventData>>> _handlers = new();
-        private readonly object _lock = new();
-        private static EventBus _instance;
+        private static readonly Dictionary<string, List<Action<EventData>>> _handlers = new();
+        private static readonly object _lock = new();
         
-        public static EventBus Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    _instance = new EventBus();
-                }
-                return _instance;
-            }
-        }
-        
-        public void Publish(string eventName, Dictionary<string, object> payload = null)
+        public static void Publish(string eventName, Dictionary<string, object> payload = null)
         {
             if (string.IsNullOrEmpty(eventName)) return;
             
@@ -74,7 +61,7 @@ namespace Inventonater.Rules
             }
         }
         
-        public IDisposable Subscribe(string eventName, Action<EventData> handler)
+        public static IDisposable Subscribe(string eventName, Action<EventData> handler)
         {
             if (string.IsNullOrEmpty(eventName) || handler == null)
                 return new DisposableAction(() => { });
@@ -94,7 +81,7 @@ namespace Inventonater.Rules
             return new DisposableAction(() => Unsubscribe(eventName, handler));
         }
         
-        private void Unsubscribe(string eventName, Action<EventData> handler)
+        private static void Unsubscribe(string eventName, Action<EventData> handler)
         {
             lock (_lock)
             {
@@ -111,7 +98,7 @@ namespace Inventonater.Rules
             }
         }
         
-        public void Clear()
+        public static void Clear()
         {
             lock (_lock)
             {
@@ -119,7 +106,7 @@ namespace Inventonater.Rules
             }
         }
         
-        public void Reset()
+        public static void Reset()
         {
             Clear();
         }

@@ -44,9 +44,8 @@ namespace Inventonater.Rules
             // Set up timers
             _timerService.ProcessScheduleTriggers(_repo.GetAllRules());
             
-            // Start main event loop
-            _loopCts = new CancellationTokenSource();
-            Run(_loopCts.Token).Forget();
+            // Register for events instead of using async stream
+            RegisterEventHandlers();
             
             Debug.Log("[RuleEngine] Initialized");
         }
@@ -81,11 +80,27 @@ namespace Inventonater.Rules
             Debug.Log($"[RuleEngine] Initialized {_patternWatchers.Count} pattern watchers");
         }
         
-        private async UniTaskVoid Run(CancellationToken ct)
+        private void RegisterEventHandlers()
         {
-            await foreach (var e in EventBus.GetStream(ct))
+            // Subscribe to all possible events that rules might care about
+            var allRules = _repo.GetAllRules();
+            var eventNames = new HashSet<string>();
+            
+            foreach (var rule in allRules)
             {
-                ProcessEvent(e, ct);
+                foreach (var trigger in rule.triggers)
+                {
+                    if (trigger.type == "event" && !string.IsNullOrEmpty(trigger.name))
+                    {
+                        eventNames.Add(trigger.name);
+                    }
+                }
+            }
+            
+            // Subscribe to each unique event
+            foreach (var eventName in eventNames)
+            {
+                EventBus.Subscribe(eventName, (e) => ProcessEvent(e, _loopCts?.Token ?? CancellationToken.None));
             }
         }
         
